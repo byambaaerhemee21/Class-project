@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ачаа</title>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.4); 
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    {% block content %}
+    {% include 'admin_menu.html' %}
+    {% endblock %}
+<div class="body">
+    <div class="title">
+        Ачааны жагсаалт
+    </div>
+    <div class="zar">
+        <div class="insert">
+
+            <button type="button" class="plus" onclick="openModal()">Зар нэмэх</button><p></p>
+
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <div class="news">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <label>Гарчиг</label>
+                            <input type="text" name="a_title" class="input" placeholder="Ачааны мэдээллийг гарчиг бөглөнө үү">
+                            <label>Үнэ</label>
+                            <input type="number" name="a_price" class="input" placeholder="Үнэ оруулна уу">
+                            <label>Тайлбар</label>
+                            <input type="text" name="a_desc" class="input" placeholder="Үндсэн зараа оруулна уу">
+                            <label>Зураг</label>
+                            <input type="file" id="myFile" name="filename" class="image">
+                            <input type="submit" value="Зар нэмэх" class="zar_nemeh">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% if data %}
+            {% for x in data %}
+            <div class="zarlist" style="float: left;margin-right: 1%;">
+                <img src="{{x.3}}" width="100%" height='150px'><p></p>
+                Гарчиг {{x.0}}<p></p>
+                Үнэ {{x.1}}<p></p>
+                Тайлбар:{{x.2}}<p></p>
+                <form>
+                    <input type="submit" value="Устгах" class="plus" style="width: 30%;">
+                </form>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="none">Зар олдсонгүй</div>
+            <center><img src="{% static 'img/empty.jpg' %}"></center>
+            {%endif%}
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var modal = document.getElementById("myModal");
+
+    var btn = document.getElementById("myBtn");
+
+    var span = document.getElementsByClassName("close")[0];
+
+    function openModal() {
+        modal.style.display = "block";
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>

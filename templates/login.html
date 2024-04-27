@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нэвтрэх хэсэг</title>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    {% block content %}
+    {% include 'menu.html' %}
+  {% endblock %}
+    <div class="body">
+        <center>
+            <form method="post">
+                {% csrf_token %}
+            <div class="signup" id="signup" style="display: none;" name="signup">
+                    <h2>Бүртгүүлэх хэсэг</h2>
+                    <label>Хэрэглэгчийн нэр</label>
+                    <input type="text" class="l_user" placeholder="Нууц үгээ оруулна уу?" name="uname">
+                    <label>Цахим хаяг</label>
+                    <input type="text" class="l_mail" placeholder="Цахим хаягаа оруулна уу?" name="umail">
+                    <label>Нууц үг</label>
+                    <input type="text" class="l_pass" placeholder="Нууц үгээ оруулна уу?" name="upass">
+                    <label>Нууц үг давтах</label>
+                    <input type="text" class="l_rpass" placeholder="Нууц үгээ давтана уу?" name="urpass">
+
+                    {% if messages %}
+                    <div class="messages" style="color:rgb(255, 79, 79);padding: 5px;margin-bottom: 30px;">
+                        {% for message in messages %}
+                            <strong{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</strong>
+                        {% endfor %}
+                    </div>    
+                    {% endif %}
+
+                    <label>Хэрэглэгчийн төрөл</label>
+                    <select name="utype" id="usertype">
+                        <option value="user">Хэрэглэгч</option>
+                        <option value="admin">Админ</option>
+                        <option value="company">Байгууллага</option>
+                      </select>
+                    <input type="submit" value="Бүртгүүлэх" class="submit">
+                <button class="back" onclick="change2()"  style="border: none;cursor: pointer;">Буцах</button>
+            </div>
+            </form>
+
+            <form method="post">
+                {% csrf_token %}
+            <div class="signin" id="signin" name="signin">
+                    <h2>Нэвтрэх хэсэг</h2>
+                    <label>Цахим хаяг</label>
+                    <input type="text" class="l_mail" placeholder="example@gmail.com" name="lmail">
+                    <label>Нууц үг</label>
+                    <input type="text" class="l_pass" style="margin-bottom: 10px;" placeholder="Нууц үгээ оруулна уу?" name="lpass">
+                    <a href="#" class="forgetpass">Нууц үг сэргээх?</a>
+                    <input type="submit" value="Нэвтрэх" class="submit">
+                <button class="back" onclick="change1()" style="border: none;cursor: pointer;">Бүртгүүлэх</button>
+            </div>
+            </form>
+        </center>
+        
+    </div>
+    <div class="footer">
+        <ul>
+            <li style="color: white;">Бидний тухай</li>
+            <li style="color: white;">Бидэнтэй холбогдох</li>
+            <li style="font-weight: bold; font-size: 30px;color: white; margin-right: 3%; margin-left: 12%;" class="logoname">Shagnaa</li>
+            <li style="color: white;">Үйлчилгээний нөхцөл</li>
+            <li style="color: white;">Тусламж</li>
+        </ul>
+        <center>
+            <div style="width: 80%; background-color: white; height: 2px;margin-top: 5%;"></div>
+        <div class="social">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-instagram"></a>
+            <a href="#" class="fa fa-twitter"></a>
+        </div>
+        </center>
+    </div>
+<script src="{% static 'js/login.js' %}"> </script>
+</body>
+</html>

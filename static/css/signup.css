@@ -1,0 +1,176 @@
+body{
+    margin: 0px;
+    background-color:rgb(211, 211, 211);
+}
+
+.header{
+    background-color: white;
+    height: 50px;
+    padding: 10px;
+}
+
+li{
+    float: left;
+    margin-left: 10%;
+    list-style: none;
+    cursor:pointer;
+}
+.enjoy{
+    margin-left: 20%;
+    color: rgb(255, 77, 106);
+}
+.logo{
+    margin-right: 5%;
+}
+
+@media only screen and (max-width: 1000px){
+    li{
+        margin-left: 10%;
+    }
+    .enjoy{
+        margin-left: 20%;
+    }
+    .logo{
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+    .user{
+        margin-left: 5%;
+    }
+    .header{
+        font-size: 10px;
+        height: 30px;
+    }
+    .signin{
+        width: 100%;
+        font-size: 10px;
+    }
+    .signup{
+        width: 100%;
+        font-size: 10px;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .logo{
+        margin-left: -5%;
+    }
+    .enjoy{
+        margin-left: 12%;
+    }
+    .signin{
+        width: 100%;
+        font-size: 10px;
+    }
+    .signup{
+        width: 100%;
+        font-size: 10px;
+    }
+
+    .footer{
+        display: none;
+    }
+}
+
+.signup{
+    width: 25%;
+    height: 500px;
+    background-color: white;
+    margin-top: 5%;
+    padding: 2%;
+}
+
+.signin{
+    width: 30%;
+    height: 300px;
+    background-color: white;
+    margin-top: 5%;
+    padding: 2%;
+}
+
+.l_user{
+    width: 100%;
+    height: 25px;
+    border: 1px solid rgb(255, 77, 106);
+}
+.l_mail{
+    width: 100%;
+    height: 25px;
+    border: 1px solid rgb(255, 77, 106);
+}
+.l_pass{
+    width: 100%;
+    height: 25px;
+    border: 1px solid rgb(255, 77, 106);
+}
+.l_rpass{
+    width: 100%;
+    height: 25px;
+    border: 1px solid rgb(255, 77, 106);
+}
+#usertype{
+    width: 101.4%;
+    height: 30px;
+    border: 1px solid rgb(255, 77, 106);
+}
+label{
+    float: left;
+    margin-bottom: 3%;
+    margin-top: 3%;
+}
+h2{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.submit{
+    width: 101.4%;
+    padding: 2%;
+    margin-top: 3%;
+    background-color: rgb(255, 77, 106);
+    border: 1px solid rgb(255, 77, 106);
+    color: white;
+    font-weight: bold;
+}
+
+.back{
+    margin-top: 5%;
+    float: right;
+    color: black;
+    margin-bottom: 5%;
+}
+.forgetpass{
+    text-decoration: none;
+    color: black;
+    float: right;
+}
+
+.forgetpass:hover{
+    text-decoration: underline;
+}
+
+.footer{
+    width: 100%;
+    background-color: rgb(92, 92, 92);
+    height: 200px;  
+    margin-top: 10%;
+    padding-top: 3%;
+}
+
+.social{
+    font-size: 30px;
+    padding: 2%;
+}
+
+.fa-facebook{
+    color: white;
+    margin-left: 1%;
+}
+.fa-instagram{
+    color: white;
+    margin-left: 1%;
+}
+.fa-twitter{
+    color: white;
+    margin-left: 1%;
+}

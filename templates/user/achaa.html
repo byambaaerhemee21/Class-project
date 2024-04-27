@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ачаа</title>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.4); 
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    {% block content %}
+    {% include 'admin_menu.html' %}
+    {% endblock %}
+<div class="body">
+    <div class="title">
+        Ачааны жагсаалт
+    </div>
+    <div class="zar">
+        <div class="insert">
+            {% if data %}
+            {% for x in data %}
+            <div class="zarlist" style="float: left; margin-right: 20px;">
+                <img src="{{x.3}}" width="100%" height='150px'><p></p>
+                Гарчиг {{x.0}}<p></p>
+                Үнэ {{x.1}}<p></p>
+                Тайлбар:{{x.2}}<p></p>
+                <button type="button" style="width: 50%;" class="plus" onclick="openModal()">Хүсэлт илгээх</button>
+
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <div class="news">
+                        <h3>1. Жолоочийн мэдээлэл</h3>
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <label>Овог Нэр</label>
+                            <input type="text" name="a_title" class="input" placeholder="Овог нэрээ оруулна уу?">
+                            <label>Үнэмлэхний хүчинтэй хугацаа</label>
+                            <input type="text" name="a_price" class="input" placeholder="Эхлэсэн болон дуусах хугацаа оруулна уу?">
+                            <label>Лиценз дугаар</label>
+                            <input type="text" name="a_desc" class="input" placeholder="Үнэмлэхний ард байрлах License number">
+                            <label>Иргэний үнэмлэхний зураг</label>
+                            <input type="file" id="myFile" name="filename" class="image">
+                        <h3 style="margin-top: 8%;">1. Чиргүүлний мэдээлэл</h3>
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <label>Регистр дугаар</label>
+                            <input type="text" name="a_title" class="input" placeholder="РД оруулна уу?">
+                            <label>Тээврийн хэрэгслийн төрөл</label>
+                            <input type="text" name="a_price" class="input" placeholder="Эзэмшдэг тээврийн хэрэгслийн төрөлийг бичнэ үү?">
+                            <label>Явах эд ангийн дугаар</label>
+                            <input type="text" name="a_desc" class="input" placeholder="Чиргүүлний дугаараа оруулна уу?">
+                            <label>Худалдааны тэмдэг эсвэл үйлдвэрлэгчийн нэр</label>
+                            <input type="text" name="a_price" class="input" placeholder="Худалдааны тэмдэг эсвэл үйлдвэрлэгчийн нэр оруулна уу?">
+                            <label>Сефтиркатын дугаар</label>
+                            <input type="text" name="a_desc" class="input" placeholder="Олгосон Сефтиркатын дугаарыг бичнэ үү">
+                            <label>Гэрчилгээний зургийг хавсаргана уу? PDF байж болно.</label>
+                            <input type="file" id="myFile" name="filename" class="image">
+                            <input type="submit" value="Илгээх" class="zar_nemeh">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="none">Зар олдсонгүй</div>
+            <center><img src="{% static 'img/empty.jpg' %}"></center>
+            {%endif%}
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var modal = document.getElementById("myModal");
+
+    var btn = document.getElementById("myBtn");
+
+    var span = document.getElementsByClassName("close")[0];
+
+    function openModal() {
+        modal.style.display = "block";
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+.title{
+    border-bottom: 1px solid black;
+    padding: 2%;
+    font-size: 20px;
+    width: 10%;
+    margin-bottom: 2%;
+}
+.body{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.zar{
+    width: 100%;
+    height: 800px;
+    background-color: rgb(195, 195, 195);
+    padding: 1%;
+}
+.plus{
+    background-color: rgb(255, 77, 106);
+    padding: 1%;
+    color: white;
+    border: 1px solid white;
+    width: 10%;
+    cursor: pointer;
+    border-radius: 20px;
+}
+.close{
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 1%;
+}
+.input{
+    width: 90%;
+    margin-top: 10px;
+    padding: 10px;
+}
+.image{
+    width: 90%;
+    margin-top: 10px;
+}
+label{
+    width: 100%;
+}
+
+.zar_nemeh{
+    width: 30%;
+    padding: 1%;
+    margin-top: 20px;
+    background-color: rgb(255, 77, 106);
+    color: white;
+    border: 1px solid white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.zarlist{
+    width: 25%;
+    height: auto;
+    padding: 1%;
+    background-color: white;
+    margin-top: 1%;
+}
+.none{
+    width: 100%;
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 6%;
+}
