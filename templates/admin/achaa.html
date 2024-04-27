@@ -68,15 +68,18 @@
             {% if data %}
             {% for x in data %}
             <div class="zarlist" style="float: left;margin-right: 1%;">
-                <img src="{{x.3}}" width="100%" height='150px'><p></p>
-                Гарчиг {{x.0}}<p></p>
-                Үнэ {{x.1}}<p></p>
-                Тайлбар:{{x.2}}<p></p>
-                <form>
-                    <input type="submit" value="Устгах" class="plus" style="width: 30%;">
+                <img src="{{ x.3 }}" width="100%" height='150px'><p></p>
+                <p>Гарчиг: {{ x.0 }}</p>
+                <p>Үнэ: {{ x.1 }}</p>
+                <p>Тайлбар: {{ x.2 }}</p>
+                <form method='post'>
+                    {% csrf_token %}
+                    <input type="hidden" name="delete_id" value="{{ x.0 }}">
+                    <input type="submit" value="Устгах" class="plus" style="width: 30%;" name='delete'>
                 </form>
             </div>
             {% endfor %}
+            
             {% else %}
             <div class="none">Зар олдсонгүй</div>
             <center><img src="{% static 'img/empty.jpg' %}"></center>

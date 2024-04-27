@@ -26,26 +26,37 @@ def a_index(request):
 def a_achaa(request):
     context = {}
     if request.method == 'POST':
-        a_title = request.POST.get('a_title')
-        a_price = request.POST.get('a_price')
-        a_desc = request.POST.get('a_desc')
-        a_img = request.FILES.get('filename')
-        url = f'static/img/{a_title}.jpg'  
-        handle_upload(a_img,url)
-        con = sql.connect('db.sqlite3')
-        cur = con.cursor()
-        cur.execute("INSERT INTO 'achaa_zar' (a_title, a_price, a_desc, a_img) VALUES(?, ?, ?, ?)", (a_title, a_price, a_desc, url))
-        con.commit()
-        con.close()
-        return redirect('a_achaa')
+        if 'delete' in request.POST:
+            delete_id = request.POST.get('delete_id')
+            con = sql.connect('db.sqlite3')
+            cur = con.cursor()
+            cur.execute("DELETE FROM achaa_zar WHERE a_title=?", (delete_id,))
+            con.commit()
+            con.close()
+            return redirect('a_achaa')
+        else:
+            a_title = request.POST.get('a_title')
+            a_price = request.POST.get('a_price')
+            a_desc = request.POST.get('a_desc')
+            a_img = request.FILES.get('filename')
+            url = f'static/img/{a_title}.jpg'  
+            handle_upload(a_img, url)
+            con = sql.connect('db.sqlite3')
+            cur = con.cursor()
+            cur.execute("INSERT INTO achaa_zar (a_title, a_price, a_desc, a_img) VALUES (?, ?, ?, ?)", (a_title, a_price, a_desc, url))
+            con.commit()
+            con.close()
+            return redirect('a_achaa')
     else:
         con = sql.connect('db.sqlite3')
         cur = con.cursor()
-        cur.execute("SELECT a_title,a_price,a_desc,a_img FROM 'achaa_zar'")
+        cur.execute("SELECT a_title,a_price,a_desc,a_img FROM achaa_zar")
         xp = cur.fetchall()
         context['data'] = xp
+        con.close()
 
     return render(request, 'admin/achaa.html', context=context)
+
 def login(request):    
     if request.method == 'POST':
         if request.POST.get('umail'):
