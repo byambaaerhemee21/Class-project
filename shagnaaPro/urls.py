@@ -22,6 +22,8 @@ urlpatterns = [
     path('login', views.login, name='login'),
     path('achaa', views.achaa, name='achaa'),
     path('', views.uindex, name='uindex'),
+    path('a_news', views.news, name='news'),
+    path('news', views.u_news, name='unews'),
     path('a_index', views.a_index, name='a_index'),
     path('a_achaa', views.a_achaa, name='a_achaa'),
 ]

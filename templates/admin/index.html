@@ -7,6 +7,8 @@
     <title>Hүүр хуудас</title>
     <link rel="stylesheet" href="{% static 'css/signup.css' %}">
     <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+    <link rel="stylesheet" href="{% static 'admin.css' %}">
+    <link rel="stylesheet" href="{% static 'news.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,7 +16,7 @@
         body {
           font-family: Arial, Helvetica, sans-serif;
         }
-        
+
         .notification {
           background-color: #ffffff;
           color: rgb(0, 0, 0);
@@ -43,20 +45,96 @@
             margin-top: 1%;
             float: left;
         }
+        .modal {
+          display: none; 
+          position: fixed; 
+          z-index: 1; 
+          left: 0;
+          top: 0;
+          width: 100%; 
+          height: 100%; 
+          overflow: auto; 
+          background-color: rgba(0,0,0,0.4); 
+      }
+
+      .modal-content {
+          background-color: #fefefe;
+          margin: 15% auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 50%;
+      }
+      .req_table{
+        width:30%;
+        border:none;
+        background-color:white;
+        border:1px solid black;
+        height:1200px;
+        margin-right:1%
+      }
         </style>
 </head>
 <body>
     {% block content %}
     {% include 'admin_menu.html' %}
-    {% endblock %}
-    <a href="#" class="notification">
-        <span>Таньд ирсэн хүсэлтүүд</span>
-        <span class="badge">3</span>
-      </a>
-    <center>
-        <div class="body">
 
+    <button class="notification" onclick="openModal()">
+        <span>Таньд ирсэн хүсэлтүүд</span>
+        <span class="badge">{{id_num}}</span>
+    </button>
+    <center>
+        <div class="body" style="height:350px">
+          <div class='requests' style='overflow:auto;height:350px'>
+            {% if data %}
+            {% for x in data %}
+            <div class='req_table' style='float:left;background-color:white'>
+              <div class='reqcard'>
+                <img src='{{x.3}}' width='100%' height='250px'>
+                <h3>Овог Нэр</h3>
+                {{x.0}}
+                <h3>Үнэмлэхний хүчинтэй хугацаа</h3>
+                {{x.1}}
+                <h3>Лиценз дугаар</h3>
+                {{x.2}}
+                <img src='{{x.9}}' width='100%' height='250px'>
+                <h3>Регистр дугаар</h3>
+                {{x.4}}
+                <h3>Тээврийн хэрэгслийн төрөл</h3>
+                {{x.5}}
+                <h3>Явах эд ангийн дугаар</h3>
+                {{x.6}}
+                <h3>Худалдааны тэмдэг эсвэл үйлдвэрлэгчийн нэр</h3>
+                {{x.7}}
+                <h3>Сефтиркатын дугаар</h3>
+                {{x.8}}
+              </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class='nothing'> Одоогоор хүсэлт ирээгүй байна </div>
+            {% endif %}
+          </div>
+          <div></div>
         </div>
     </center>
+    {% include 'footer.html' %}
+    {% endblock %}
+  <script>
+
+      var modal = document.getElementById("myModal");
+  
+      var btn = document.getElementById("myBtn");
+  
+      var span = document.getElementsByClassName("close")[0];
+  
+      function openModal() {
+          modal.style.display = "block";
+      }
+  
+      function closeModal() {
+          modal.style.display = "none";
+      }
+  
+  </script>
 </body>
 </html>

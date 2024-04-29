@@ -20,6 +20,35 @@
       .text{
         margin-bottom:10%
       }
+      .card{
+        width: 98%;
+        height: 450px;
+        background-color: white;
+        margin-top:1%;
+        padding:1%;
+    }
+    .scard{
+      width:29%;
+      height: 250px;
+      border: 1px solid black;
+      float:left;
+      margin-right:1%;
+      margin-left:1%;
+      padding:1%;
+      border-radius:35px;
+    }
+    .allin{
+      width:10%;
+      margin-top:1%;
+      padding: 1%;
+      float:right;
+      cursor:pointer;
+      margin-right:2%;
+      font-size:15px;
+      color:white;
+      border: 1px solid white;
+      background-color:rgb(250, 61, 93);
+    }
     </style>
 </head>
 <body>
@@ -33,10 +62,25 @@
       <button class="ok">Хайх</button>
     </center>
   </div>
-  <div class="img">
-    <center>
-    </center> 
-  </div>
+
+  <div class="card">
+    <h2>Мэдээнүүд</h2>
+      {% if data %}
+      {% for x in data%}
+      <div class='scard'>
+        <div style='width:49%;height:250px;float:left'>
+          <img src={{x.3}} width='100%' height='250px' style="border-radius:15px;">
+        </div>
+        <div style='width:49%;height:250px;float:left;padding-left:2%;'>
+          <b>Гарчиг : </b>{{x.1}}
+          <p><b>Тайлбар : </b> {{x.2}}
+        </div>
+      </div>
+      {% endfor %}
+      {% endif %}
+  
+  <a href='{% url "unews" %}'><button class='allin'>Бүгдийг харах</button></a>
+</div>
     {% include 'footer.html' %}
     {% endblock %}
  

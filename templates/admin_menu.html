@@ -6,9 +6,9 @@
             <img src="{% static 'img/logo.jpg' %}" width="40px" height="30px">
         </li> </a>
         <a href="{% url 'a_achaa' %}"><li>Ачаа</li></a>
-        <li>Мэдээлэл</li>
+        <a href="{% url 'news' %}"><li>Мэдээлэл</li></a>
         <li>Бидний тухай</li>
         <li class="enjoy"><i class="fa fa-notification"></i></li>
-        <li class="user"><i class="fa fa-user"></i></li>
+        <a href="{% url 'login' %}"><li class="user"><i class="fa fa-user"></i></li></a>
     </ul>
 </div>

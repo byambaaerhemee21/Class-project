@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ачаа</title>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+    <link rel="stylesheet" href="{% static 'css/news.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+    </style>
+</head>
+<body>
+    {% block content %}
+    {% include 'admin_menu.html' %}
+    <div class="news_insert">
+        <div class="ni">
+            <form method='post' enctype="multipart/form-data">
+                {% csrf_token %}
+                <label>Гарчиг</label>
+                <input type='text' name='nname' class='news' placeholder='Гарчигаа оруулна уу?'>
+                <label>Тайлбар</label>
+                <input type='text' name='ndesc' class='news' placeholder='Тайлбараа оруулна уу?'>
+                <label>Зургаа оруулна уу?</label>
+                <input type='file' name='nimg' class='news' style='border:none'>
+                <input type='submit' value='Нийтлэх' class='n_sub'>
+            </form>
+        </div>
+    </div>
+    <div class="news_views">
+        <h2>Cүүлд нэмэгдсэн мэдээнүүд</h2>
+            {% if data%}
+            {% for x in data %}
+            <div class="nv" style='height:250px'>
+                <div class='img'>   
+                    <img src="{{x.2}}" width="100%" height="250px">
+                </div>
+                <div class='text'>
+                    <h3>Гарчиг: {{x.0}}</h3>
+                    Тайлбар: {{x.1}}
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="news_id" value="{{ x.0 }}">
+                        <button type="submit" name="delete">Устгах</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+    </div>
+    {% include 'footer.html' %}
+    {% endblock %}    
+</body>  
+
+</html>

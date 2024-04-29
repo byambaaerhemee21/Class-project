@@ -1,11 +1,11 @@
 {% load static %}
 <div class="header">
     <ul>
-        <li class="logo" style="margin-left: 8%;">
+        <a href="{% url 'uindex'%}"><li class="logo" style="margin-left: 8%;">
             <img src="{% static 'img/logo.jpg' %}" width="40px" height="30px">
-        </li>
+        </li></a>
         <a href="{% url 'achaa' %}"><li>Ачаа</li></a>
-        <li>Мэдээлэл</li>
+        <a href="{% url 'unews' %}"><li>Мэдээлэл</li></a>
         <li>Бидний тухай</li>
         <li class="enjoy"><i class="fa fa-heart"></i></li>
         <a href="{% url 'login' %}"><li class="user"><i class="fa fa-user"></i></li></a>

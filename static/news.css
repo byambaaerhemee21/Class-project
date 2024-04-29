@@ -1,0 +1,59 @@
+.news_insert{
+    width: 48%;
+    height: 40rem;
+    background-color: rgb(255, 255, 255);
+    float: left;
+    margin-top: 3%;
+    padding: 1%;
+}
+
+.news_views{
+    width: 48%;
+    height: 40rem;
+    background-color: rgb(224, 224, 224);
+    float: left;
+    margin-top: 3%;
+    padding: 1%;
+    overflow: scroll;
+}
+
+.news{
+    width: 95%;
+    height: 20px;
+    padding: 1%;
+    border: 1px ;
+    font-size: 14px;
+    float: left;
+    border: 2px solid rgb(240, 80, 106);
+}
+label{
+    font-size: 20px;
+    float: left;
+}
+.n_sub{
+    padding: 1%;
+    width: 30%;
+    border: 2px solid rgb(240, 80, 106);
+    margin-top: 5%; 
+    background-color: white;
+    cursor: pointer;
+}
+.nv{
+    width: 100%;
+    height: 250px;
+    background-color:gray ;
+    margin-bottom: 2%;
+}
+.reqcard{
+    width: 100%;
+    height: 250px;
+    background-color: pink;
+    margin-right: 1%;
+}
+.img{
+    float: left;
+}
+.text{
+    float: left;
+    padding-left:3%;
+}

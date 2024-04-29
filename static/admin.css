@@ -71,9 +71,9 @@ label{
     border: 1px solid black;
     height: 300px;
 }
-
 .nothing{
-    font-size: 50px;
+    font-size: 2rem;
+    margin-top: 5%;
 }
 .req_table{
     width: 30%;

@@ -35,58 +35,30 @@
 </head>
 <body>
     {% block content %}
-    {% include 'admin_menu.html' %}
-    {% endblock %}
+    {% include 'menu.html' %}
 <div class="body">
     <div class="title">
-        Ачааны жагсаалт
+        Мэдээний жагсаалт
     </div>
     <div class="zar">
         <div class="insert">
-
-            <button type="button" class="plus" onclick="openModal()">Зар нэмэх</button><p></p>
-
-            <div id="myModal" class="modal">
-                <div class="modal-content">
-                    <span class="close" onclick="closeModal()">&times;</span>
-                    <div class="news">
-                        <form method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <label>Гарчиг</label>
-                            <input type="text" name="a_title" class="input" placeholder="Ачааны мэдээллийг гарчиг бөглөнө үү">
-                            <label>Үнэ</label>
-                            <input type="number" name="a_price" class="input" placeholder="Үнэ оруулна уу">
-                            <label>Тайлбар</label>
-                            <input type="text" name="a_desc" class="input" placeholder="Үндсэн зараа оруулна уу">
-                            <label>Зураг</label>
-                            <input type="file" id="myFile" name="filename" class="image">
-                            <input type="submit" value="Зар нэмэх" class="zar_nemeh">
-                        </form>
-                    </div>
-                </div>
-            </div>
             {% if data %}
             {% for x in data %}
-            <div class="zarlist" style="float: left;margin-right: 1%;border-radius:15px;">
-                <img src="{{ x.3 }}" width="100%" height='150px'><p></p>
-                <p>Гарчиг: {{ x.0 }}</p>
-                <p>Үнэ: {{ x.1 }}</p>
-                <p>Тайлбар: {{ x.2 }}</p>
-                <form method='post'>
-                    {% csrf_token %}
-                    <input type="hidden" name="delete_id" value="{{ x.0 }}">
-                    <input type="submit" value="Устгах" class="plus" style="width: 30%;" name='delete'>
-                </form>
+            <div class="zarlist" style="float: left; margin-right: 20px;border-radius:15px;">
+                <img src="{{x.3}}" width="100%" height='150px' style='border-radius:15px;'><p></p>
+                Гарчиг: {{x.1}}<p></p>
+                Тайлбар: {{x.2}}<p></p>
             </div>
             {% endfor %}
-            
             {% else %}
             <div class="none">Зар олдсонгүй</div>
             <center><img src="{% static 'img/empty.jpg' %}"></center>
             {%endif%}
         </div>
     </div>
-</div>
+ </div>   {% include 'footer.html' %}
+    {% endblock %}
+
 
 <script>
 
@@ -108,6 +80,9 @@
         if (event.target == modal) {
             modal.style.display = "none";
         }
+    }
+    function myfunction(){
+        alert('Хүсэлтийг илгээх үү?')
     }
 </script>
 </body>
